@@ -1,13 +1,7 @@
-import { Fragment } from 'react';
-import './App.css';
-import { Navbar } from './Components/Navbar';
+import Contact from './pages/Contact';
 
 function App() {
-  return (
-   <Fragment>
-      <Navbar/>
-   </Fragment>
-  );
+	return <></>;
 }
 
 export default App;
