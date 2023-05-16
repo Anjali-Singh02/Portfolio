@@ -1,6 +1,12 @@
 import React, { Fragment, useState } from 'react';
 import { TbCircleChevronLeft } from 'react-icons/tb';
-import { HiOutlineHome } from 'react-icons/hi';
+import { AiFillHome } from 'react-icons/ai';
+import { FaUserGraduate } from 'react-icons/fa';
+import { MdContacts } from 'react-icons/md';
+import { FaChartLine } from 'react-icons/fa';
+import { SiAboutdotme } from 'react-icons/si';
+import { BsQuestionCircleFill } from 'react-icons/bs';
+
 import { IconContext } from 'react-icons/lib';
 import { Routes, Route, Link } from 'react-router-dom';
 import Home from '../pages/Home';
@@ -61,7 +67,7 @@ export const Navbar = () => {
 									}}
 								>
 									<Link to="/">
-										<HiOutlineHome />
+										<AiFillHome />
 									</Link>
 								</IconContext.Provider>
 							</div>
@@ -86,7 +92,7 @@ export const Navbar = () => {
 									}}
 								>
 									<Link to="/about">
-										<HiOutlineHome />
+										<BsQuestionCircleFill />
 									</Link>
 								</IconContext.Provider>
 							</div>
@@ -111,7 +117,7 @@ export const Navbar = () => {
 									}}
 								>
 									<Link to="/education">
-										<HiOutlineHome />
+										<FaUserGraduate />
 									</Link>
 								</IconContext.Provider>
 							</div>
@@ -136,7 +142,7 @@ export const Navbar = () => {
 									}}
 								>
 									<Link to="/projects">
-										<HiOutlineHome />
+										<FaChartLine />
 									</Link>
 								</IconContext.Provider>
 							</div>
@@ -161,7 +167,7 @@ export const Navbar = () => {
 									}}
 								>
 									<Link to="/contact">
-										<HiOutlineHome />
+										<MdContacts />
 									</Link>
 								</IconContext.Provider>
 							</div>
