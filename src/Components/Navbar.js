@@ -52,9 +52,7 @@ export const Navbar = () => {
 							} `}
 						/>
 					</div>
-					<div
-						className={`flex-col mt-8 border-2 ${!open && 'pt-2'}`}
-					>
+					<div className={`flex-col mt-8 text-sm ${!open && 'pt-2'}`}>
 						<div className="flex text-center m-2">
 							<div>
 								<IconContext.Provider
@@ -182,22 +180,30 @@ export const Navbar = () => {
 						</div>
 					</div>
 					<div
-						className={` flex mt-52 pt-2   justify-evenly  border-2 text-xl ${
-							!open && ' h-40 flex-col pl-4'
+						className={` flex mt-52 pt-2   justify-evenly text-xl ${
+							!open && ' h-40 flex-col pl-4 mt-60'
 						}`}
 					>
-						<div className="mb-2">
-							<AiOutlineLinkedin />
+						<div className="">
+							<Link to="https://www.linkedin.com/in/anjali-singh02/">
+								<AiOutlineLinkedin />
+							</Link>
 						</div>
 						<div>
-							<VscGithub />
+							<Link to="https://github.com/Anjali-Singh02">
+								<VscGithub />
+							</Link>
 						</div>
 
 						<div>
-							<FaInstagram />
+							<Link to="https://www.instagram.com/anju01173/">
+								<FaInstagram />
+							</Link>
 						</div>
 						<div>
-							<TfiTwitter />
+							<Link to="https://twitter.com/Anjali__Singh02">
+								<TfiTwitter />
+							</Link>
 						</div>
 					</div>
 				</div>
@@ -214,6 +220,9 @@ export const Navbar = () => {
 						/>
 						<Route path="/projects" element={<Projects />} exact />
 					</Routes>
+					<div>
+						<Footer />
+					</div>
 				</div>
 			</div>
 		</Fragment>
