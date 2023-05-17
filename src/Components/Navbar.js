@@ -1,12 +1,11 @@
 import React, { Fragment, useState } from 'react';
 import { TbCircleChevronLeft } from 'react-icons/tb';
-import { AiFillHome } from 'react-icons/ai';
-import { FaUserGraduate } from 'react-icons/fa';
+import { AiFillHome, AiOutlineLinkedin } from 'react-icons/ai';
+import { FaInstagram, FaUserGraduate, FaChartLine } from 'react-icons/fa';
+import { TfiTwitter } from 'react-icons/tfi';
 import { MdContacts } from 'react-icons/md';
-import { FaChartLine } from 'react-icons/fa';
-import { SiAboutdotme } from 'react-icons/si';
 import { BsQuestionCircleFill } from 'react-icons/bs';
-
+import { VscGithub } from 'react-icons/vsc';
 import { IconContext } from 'react-icons/lib';
 import { Routes, Route, Link } from 'react-router-dom';
 import Home from '../pages/Home';
@@ -14,18 +13,19 @@ import About from '../pages/About';
 import Education from '../pages/Education';
 import Projects from '../pages/Projects';
 import Contact from '../pages/Contact';
+import Footer from './Footer';
 
 export const Navbar = () => {
 	const [open, setOpen] = useState(true);
 	return (
 		<Fragment>
 			{/* navbar container */}
-			<div className="flex">
+			<div className="flex h-screen w-80">
 				{/* sidebar container */}
 				<div
 					className={`${
-						open ? 'w-64' : 'w-20'
-					} p-5 pt-8 h-screen bg-purple-950 text-white relative duration-300`}
+						open ? 'w-8/12 ' : 'w-20 '
+					} p-3 pt-5 h-screen bg-purple-950 text-white relative duration-300 `}
 				>
 					{/* control icon wrapped inside IconContext.Provider */}
 					<IconContext.Provider
@@ -44,26 +44,24 @@ export const Navbar = () => {
 						<img
 							src="/assets/profile.jpg"
 							alt="myImage"
-							className={`rounded-3xl items-center w-11/12 mx-auto cursor-pointer ${
-								!open && 'h-10'
-							}`}
+							className={`${
+								open &&
+								'rounded-2xl items-center h-60 w-44 m-auto cursor-pointer'
+							} ${
+								!open && 'h-14 w-14 m-auto  rounded-full mt-4'
+							} `}
 						/>
-						<h2
-							className={`p-4 text-3xl font-bold  ${
-								!open && 'scale-0'
-							}`}
-						>
-							Anjali Singh
-						</h2>
 					</div>
-					<div className="flex-col gap-x-2 items-center">
-						<div className="flex ">
+					<div
+						className={`flex-col mt-8 border-2 ${!open && 'pt-2'}`}
+					>
+						<div className="flex text-center m-2">
 							<div>
 								<IconContext.Provider
 									value={{
 										size: '2em',
 										className:
-											'global-class-name  cursor-pointer text-white duration-200 items-center',
+											'global-class-name p-1 cursor-pointer text-white duration-200 items-center',
 									}}
 								>
 									<Link to="/">
@@ -74,7 +72,7 @@ export const Navbar = () => {
 
 							<div>
 								<h3
-									className={`origin-left font-medium text-xl duration-100 ${
+									className={`origin-left px-2 font-medium text-xl duration-100 ${
 										!open && 'scale-0'
 									}`}
 								>
@@ -82,13 +80,13 @@ export const Navbar = () => {
 								</h3>
 							</div>
 						</div>
-						<div className="flex">
+						<div className="flex m-2">
 							<div>
 								<IconContext.Provider
 									value={{
 										size: '2em',
 										className:
-											'global-class-name  cursor-pointer text-white duration-200 items-center',
+											'global-class-name p-1 cursor-pointer text-white duration-200 items-center',
 									}}
 								>
 									<Link to="/about">
@@ -99,7 +97,7 @@ export const Navbar = () => {
 
 							<div>
 								<h3
-									className={`origin-left font-medium text-xl duration-100 ${
+									className={`origin-left px-2 font-medium text-xl duration-100 ${
 										!open && 'scale-0'
 									}`}
 								>
@@ -107,13 +105,13 @@ export const Navbar = () => {
 								</h3>
 							</div>
 						</div>
-						<div className="flex">
+						<div className="flex m-2">
 							<div>
 								<IconContext.Provider
 									value={{
 										size: '2em',
 										className:
-											'global-class-name  cursor-pointer text-white duration-200 items-center',
+											'global-class-name p-1 cursor-pointer text-white duration-200 items-center',
 									}}
 								>
 									<Link to="/education">
@@ -124,7 +122,7 @@ export const Navbar = () => {
 
 							<div>
 								<h3
-									className={`origin-left font-medium text-xl duration-100 ${
+									className={`origin-left px-2 font-medium text-xl duration-100 ${
 										!open && 'scale-0'
 									}`}
 								>
@@ -132,13 +130,13 @@ export const Navbar = () => {
 								</h3>
 							</div>
 						</div>
-						<div className="flex">
+						<div className="flex m-2">
 							<div>
 								<IconContext.Provider
 									value={{
 										size: '2em',
 										className:
-											'global-class-name  cursor-pointer text-white duration-200 items-center',
+											'global-class-name p-1  cursor-pointer text-white duration-200 items-center',
 									}}
 								>
 									<Link to="/projects">
@@ -149,21 +147,21 @@ export const Navbar = () => {
 
 							<div>
 								<h3
-									className={`origin-left font-medium text-xl duration-100 ${
+									className={`origin-left px-2 font-medium text-xl duration-100 ${
 										!open && 'scale-0'
 									}`}
 								>
-									<Link to="/">Projects</Link>
+									<Link to="/projects">Projects</Link>
 								</h3>
 							</div>
 						</div>
-						<div className="flex">
+						<div className="flex m-2">
 							<div>
 								<IconContext.Provider
 									value={{
 										size: '2em',
 										className:
-											'global-class-name  cursor-pointer text-white duration-200 items-center',
+											'global-class-name p-1 cursor-pointer text-white duration-200 items-center',
 									}}
 								>
 									<Link to="/contact">
@@ -174,13 +172,32 @@ export const Navbar = () => {
 
 							<div>
 								<h3
-									className={`origin-left font-medium text-xl duration-100 ${
+									className={`origin-left px-2 font-medium text-xl duration-100 ${
 										!open && 'scale-0'
 									}`}
 								>
 									<Link to="/contact">Contact</Link>
 								</h3>
 							</div>
+						</div>
+					</div>
+					<div
+						className={` flex mt-52 pt-2   justify-evenly  border-2 text-xl ${
+							!open && ' h-40 flex-col pl-4'
+						}`}
+					>
+						<div className="mb-2">
+							<AiOutlineLinkedin />
+						</div>
+						<div>
+							<VscGithub />
+						</div>
+
+						<div>
+							<FaInstagram />
+						</div>
+						<div>
+							<TfiTwitter />
 						</div>
 					</div>
 				</div>
