@@ -1,33 +1,94 @@
 import React, { Fragment, useState } from 'react';
 import { TbCircleChevronLeft } from 'react-icons/tb';
-import { HiOutlineHome } from 'react-icons/hi';
+import { AiFillHome, AiOutlineLinkedin } from 'react-icons/ai';
+import { FaInstagram, FaUserGraduate, FaChartLine } from 'react-icons/fa';
+import { TfiTwitter } from 'react-icons/tfi';
+import { MdContacts } from 'react-icons/md';
+import { BsQuestionCircleFill } from 'react-icons/bs';
+import { VscGithub } from 'react-icons/vsc';
 import { IconContext } from 'react-icons/lib';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, NavLink } from 'react-router-dom';
 import Home from '../pages/Home';
 import About from '../pages/About';
 import Education from '../pages/Education';
 import Projects from '../pages/Projects';
 import Contact from '../pages/Contact';
+import Footer from './Footer';
+import NavLinks from './NavLinks';
 
 export const Navbar = () => {
 	const [open, setOpen] = useState(true);
+
+	const navLinks = [
+		{
+			title: 'Home',
+			link: '/',
+			Component: AiFillHome,
+			style: 'hover:text-golden ',
+		},
+		{
+			title: 'About',
+			link: '/about',
+			Component: BsQuestionCircleFill,
+			style: 'hover:text-golden',
+		},
+		{
+			title: 'Education',
+			link: '/education',
+			Component: FaUserGraduate,
+			style: 'hover:text-golden',
+		},
+		{
+			title: 'projects',
+			link: '/projects',
+			Component: FaChartLine,
+			style: 'hover:text-golden',
+		},
+		{
+			title: 'contacts',
+			link: '/contact',
+			Component: MdContacts,
+			style: 'hover:text-golden',
+		},
+	];
+
+	const socialLinks = [
+		{
+			link: 'https://www.linkedin.com/in/anjali-singh02/',
+			Component: AiOutlineLinkedin,
+		},
+		{
+			link: 'https://github.com/Anjali-Singh02',
+			Component: VscGithub,
+		},
+		{
+			link: 'https://www.instagram.com/anju01173/',
+			Component: FaInstagram,
+		},
+		{
+			link: 'https://twitter.com/Anjali__Singh02',
+			Component: TfiTwitter,
+		},
+	];
+
 	return (
 		<Fragment>
 			{/* navbar container */}
-			<div className="flex">
+			<div className="flex min-h-screen h-full w-80">
 				{/* sidebar container */}
 				<div
 					className={`${
-						open ? 'w-64' : 'w-20'
-					} p-5 pt-8 h-screen bg-purple-950 text-white relative duration-300`}
+						open ? 'w-8/12 ' : 'w-20 '
+					} p-3 pt-5 h-screen bg-purple text-white relative transition-all ease-in duration-500 `}
 				>
 					{/* control icon wrapped inside IconContext.Provider */}
 					<IconContext.Provider
 						value={{
 							size: '2em',
+
 							className: `${
 								!open && 'rotate-180'
-							} global-class-name absolute cursor-pointer text-white duration-200  -right-3 rounded-full  top-9 bg-purple-950`,
+							} global-class-name absolute cursor-pointer text-white transition-all duration-700 -right-3 rounded-full  top-9 bg-purple  hover:visible`,
 						}}
 					>
 						{/* control icon for side bar */}
@@ -38,147 +99,51 @@ export const Navbar = () => {
 						<img
 							src="/assets/profile.jpg"
 							alt="myImage"
-							className={`rounded-3xl items-center w-11/12 mx-auto cursor-pointer ${
-								!open && 'h-10'
-							}`}
+							className={`${
+								open &&
+								'rounded-2xl items-center h-60 w-44 m-auto cursor-pointer '
+							} ${
+								!open && 'h-14 w-14 m-auto  rounded-full mt-4'
+							} `}
 						/>
-						<h2
-							className={`p-4 text-3xl font-bold  ${
-								!open && 'scale-0'
-							}`}
-						>
-							Anjali Singh
-						</h2>
 					</div>
-					<div className="flex-col gap-x-2 items-center">
-						<div className="flex ">
-							<div>
-								<IconContext.Provider
-									value={{
-										size: '2em',
-										className:
-											'global-class-name  cursor-pointer text-white duration-200 items-center',
-									}}
-								>
-									<Link to="/">
-										<HiOutlineHome />
-									</Link>
-								</IconContext.Provider>
-							</div>
+					<div
+						className={`flex-col mt-8 ml-3 text-sm uppercase ${
+							!open && 'pt-2 ml-1'
+						}`}
+					>
+						{navLinks.map((element, key) => {
+							return (
+								<NavLinks
+									props={{ open, ...element }}
+									key={key}
+								/>
+							);
+						})}
+					</div>
+					<div
+						className={` flex mt-52 pt-2   justify-evenly text-xl ${
+							!open && ' h-40 flex-col pl-4 mt-60'
+						}`}
+					>
+						{socialLinks.map((element, key) => {
+							const { link, Component } = element;
 
-							<div>
-								<h3
-									className={`origin-left font-medium text-xl duration-100 ${
-										!open && 'scale-0'
-									}`}
+							return (
+								<div
+									className="motion-safe:hover:-translate-x-0.5 motion-safe:transition ... hover:text-golden"
+									key={key}
 								>
-									<Link to="/">Home</Link>
-								</h3>
-							</div>
-						</div>
-						<div className="flex">
-							<div>
-								<IconContext.Provider
-									value={{
-										size: '2em',
-										className:
-											'global-class-name  cursor-pointer text-white duration-200 items-center',
-									}}
-								>
-									<Link to="/about">
-										<HiOutlineHome />
+									<Link to={link}>
+										<Component />
 									</Link>
-								</IconContext.Provider>
-							</div>
-
-							<div>
-								<h3
-									className={`origin-left font-medium text-xl duration-100 ${
-										!open && 'scale-0'
-									}`}
-								>
-									<Link to="/about">About</Link>
-								</h3>
-							</div>
-						</div>
-						<div className="flex">
-							<div>
-								<IconContext.Provider
-									value={{
-										size: '2em',
-										className:
-											'global-class-name  cursor-pointer text-white duration-200 items-center',
-									}}
-								>
-									<Link to="/education">
-										<HiOutlineHome />
-									</Link>
-								</IconContext.Provider>
-							</div>
-
-							<div>
-								<h3
-									className={`origin-left font-medium text-xl duration-100 ${
-										!open && 'scale-0'
-									}`}
-								>
-									<Link to="/education">Education</Link>
-								</h3>
-							</div>
-						</div>
-						<div className="flex">
-							<div>
-								<IconContext.Provider
-									value={{
-										size: '2em',
-										className:
-											'global-class-name  cursor-pointer text-white duration-200 items-center',
-									}}
-								>
-									<Link to="/projects">
-										<HiOutlineHome />
-									</Link>
-								</IconContext.Provider>
-							</div>
-
-							<div>
-								<h3
-									className={`origin-left font-medium text-xl duration-100 ${
-										!open && 'scale-0'
-									}`}
-								>
-									<Link to="/">Projects</Link>
-								</h3>
-							</div>
-						</div>
-						<div className="flex">
-							<div>
-								<IconContext.Provider
-									value={{
-										size: '2em',
-										className:
-											'global-class-name  cursor-pointer text-white duration-200 items-center',
-									}}
-								>
-									<Link to="/contact">
-										<HiOutlineHome />
-									</Link>
-								</IconContext.Provider>
-							</div>
-
-							<div>
-								<h3
-									className={`origin-left font-medium text-xl duration-100 ${
-										!open && 'scale-0'
-									}`}
-								>
-									<Link to="/contact">Contact</Link>
-								</h3>
-							</div>
-						</div>
+								</div>
+							);
+						})}
 					</div>
 				</div>
-				{/* Content container starts here */}
+
+				{/* Content container routing starts here */}
 				<div>
 					<Routes>
 						<Route path="/" element={<Home />} exact />
@@ -191,6 +156,9 @@ export const Navbar = () => {
 						/>
 						<Route path="/projects" element={<Projects />} exact />
 					</Routes>
+					<div>
+						<Footer />
+					</div>
 				</div>
 			</div>
 		</Fragment>
