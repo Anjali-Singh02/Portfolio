@@ -15,6 +15,7 @@ import Projects from '../pages/Projects';
 import Contact from '../pages/Contact';
 import Footer from './Footer';
 import NavLinks from './NavLinks';
+import SocialLinks from './SocialLinks';
 
 export const Navbar = () => {
 	const [open, setOpen] = useState(true);
@@ -74,7 +75,7 @@ export const Navbar = () => {
 	return (
 		<Fragment>
 			{/* navbar container */}
-			<div className="flex min-h-screen h-full w-80">
+			<div className="flex min-h-screen h-full w-80 transition-all ease-in duration-500">
 				{/* sidebar container */}
 				<div
 					className={`${
@@ -88,7 +89,7 @@ export const Navbar = () => {
 
 							className: `${
 								!open && 'rotate-180'
-							} global-class-name absolute cursor-pointer text-white transition-all duration-700 -right-3 rounded-full  top-9 bg-purple  hover:visible`,
+							} global-class-name absolute cursor-pointer text-white transition-all duration-700 -right-3 rounded-full  top-5 bg-purple  hover:visible`,
 						}}
 					>
 						{/* control icon for side bar */}
@@ -127,17 +128,11 @@ export const Navbar = () => {
 						}`}
 					>
 						{socialLinks.map((element, key) => {
-							const { link, Component } = element;
-
 							return (
-								<div
-									className="motion-safe:hover:-translate-x-0.5 motion-safe:transition ... hover:text-golden"
+								<SocialLinks
+									props={{ open, ...element }}
 									key={key}
-								>
-									<Link to={link}>
-										<Component />
-									</Link>
-								</div>
+								/>
 							);
 						})}
 					</div>
