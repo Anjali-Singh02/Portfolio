@@ -23,7 +23,7 @@ const NavLinks = ({ props }) => {
 				</IconContext.Provider>
 
 				<h3
-					className={`origin-left px-2 font-medium text-sm duration-100  ${
+					className={`origin-left px-2 font-medium text-sm transition-all ease-in duration-500  ${
 						!open && 'scale-0'
 					}  `}
 				>
